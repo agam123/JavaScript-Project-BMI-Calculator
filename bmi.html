@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Project: BMI Calculator</title>
+    <script type="text/javascript">
+        function calculateBMI()
+        {
+            var height = document.getElementById("height").value;
+            var weight = document.getElementById("weight").value;
+            if ((height & 1 > 0) >= 0 && (weight & 1) >= 0)
+            {
+                var heightInMs = height / 100;
+
+                var bmi = weight / (heightInMs * heightInMs);
+                var result = "Your Body mass Index (BMI) is " + bmi.toFixed(2);
+                if (bmi <= 18.5)
+                {
+                    result += "<br /> You are underweight."
+                }
+                else if (bmi > 18.5 && bmi <= 24.9)
+                {
+                    result += "<br /> Congrats!!! You are normal weight."
+                }
+                else if (bmi > 24.9 && bmi <= 29.9)
+                {
+                    result += "<br /> Congrats!!! You are overweight."
+                }
+                else
+                {
+                    result += "<br /> Be careful!!! You are obese."
+                }
+                document.getElementById("output").innerHTML = result;
+
+            }
+            else {
+                alert("Enter valid inputs");
+            }
+        }
+
+    </script>
+</head>
+<body>
+<table>
+    <tr><td>Height:</td><td><input type="text" id="height"/><td>(in centimeters)</td></td></tr>
+    <tr><td>Weight:</td><td><input type="text" id="weight"/></td><td>(in kilograms)</td></td></tr>
+</table>
+    <button id="btnClick" onclick="calculateBMI();">Calculate BMI</button><br />
+    <div id="output" style="font-size: 30px; color:purple"></div>
+</body>
+</html>
